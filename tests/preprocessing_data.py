@@ -16,5 +16,8 @@ scaling_columns = ['Y' + str(i) for i in range(1961,2020)]
 area_code_column = ['Area Code']
 
 print(data_frame[area_code_column])
-print(LabelEncoder().fit_transform(data_frame[area_code_column].values))
-print(data_frame[area_code_column])
+le = LabelEncoder()
+le.fit(data_frame["Months"])
+data_frame["Months"] = le.transform(data_frame["Months"].values)
+
+print(data_frame[["Months", "Months Code"]])
