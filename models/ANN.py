@@ -7,9 +7,9 @@ class TempChangeNN(nn.Module):
         super(TempChangeNN, self).__init__()
 
         self.fc1 = nn.Linear(2, 64)
-        self.lrelu1 = nn.LeakyReLU(negative_slope=0.01)
+        self.lrelu1 = nn.LeakyReLU(negative_slope=0.1)
         self.fc2 = nn.Linear(64, 32)
-        self.lrelu2 = nn.LeakyReLU(negative_slope=0.01)
+        self.lrelu2 = nn.LeakyReLU(negative_slope=0.1)
         self.fc3 = nn.Linear(32, 1)
 
     def forward(self, x):
