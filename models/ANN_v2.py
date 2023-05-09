@@ -6,12 +6,13 @@ class TempChangeNN(nn.Module):
     def __init__(self):
         super(TempChangeNN, self).__init__()
 
-        self.lrelu = nn.LeakyReLU(negative_slope=0.05)
+        self.lrelu = nn.ELU()
 
-        self.fc1 = nn.Linear(2, 64)
-        self.fc2 = nn.Linear(64, 64)
+        self.fc1 = nn.Linear(2, 128)
+        self.fc2 = nn.Linear(128, 64)
         self.fc3 = nn.Linear(64, 32)
-        self.fc4 = nn.Linear(32, 1)
+        self.fc4 = nn.Linear(32, 16)
+        self.fc5 = nn.Linear(16, 1)
 
     def forward(self, x):
         x = self.fc1(x)
@@ -21,6 +22,7 @@ class TempChangeNN(nn.Module):
         x = self.fc3(x)
         x = self.lrelu(x)
         x = self.fc4(x)
+        x = self.lrelu(x)
+        x = self.fc5(x)
 
         return x
-
